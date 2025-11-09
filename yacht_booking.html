@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yacht Booking | Dubai</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f8ff; /* Light Cyan Background */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .yacht-bg {
+            /* Updated image placeholder for a Dubai-relevant scene */
+            background: linear-gradient(135deg, rgba(0, 150, 255, 0.9), rgba(0, 50, 100, 0.9)), url('https://placehold.co/1200x600/003366/ffffff?text=Dubai+Yacht+Rental') center center no-repeat;
+            background-size: cover;
+        }
+        .form-card {
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="yacht-bg">
+
+    <div id="bookingForm" class="form-card bg-white p-8 rounded-xl backdrop-blur-sm bg-opacity-95">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">🚢 Dubai Yacht Booking</h1>
+        <p class="text-gray-600 mb-8 text-center">Enter your travel details and send the request via WhatsApp.</p>
+
+        <!-- Form Fields -->
+        <div class="space-y-4">
+            <!-- Customer Name -->
+            <div>
+                <label for="customerName" class="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
+                <input type="text" id="customerName" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" required>
+            </div>
+
+            <!-- 1. WhatsApp Number with Country Code Dropdown -->
+            <div>
+                <label for="localNumber" class="block text-sm font-medium text-gray-700 mb-1">Customer WhatsApp Number (Required)</label>
+                <div class="flex space-x-2">
+                    <!-- Country Code Dropdown (WhatsApp) -->
+                    <select id="countryCode" class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 w-1/3 max-w-[120px]">
+                        <option value="+971" selected>+971 (UAE)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+1">+1 (USA/Canada)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+49">+49 (Germany)</option>
+                        <option value="+61">+61 (Australia)</option>
+                        <option value="+966">+966 (KSA)</option>
+                        <option value="+7">+7 (Russia)</option>
+                        <option value="+86">+86 (China)</option>
+                        <option value="+33">+33 (France)</option>
+                        <option value="+65">+65 (Singapore)</option>
+                        <option value="+60">+60 (Malaysia)</option>
+                        <option value="+81">+81 (Japan)</option>
+                    </select>
+                    <!-- Local Number Input (WhatsApp) -->
+                    <input type="tel" id="localNumber" placeholder="50 XXXXXXX" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" required>
+                </div>
+            </div>
+
+            <!-- 2. Alternative Contact Number with Country Code Dropdown (New Field) -->
+            <div>
+                <label for="localNumberAlt" class="block text-sm font-medium text-gray-700 mb-1">Alternative Contact Number (Optional)</label>
+                <div class="flex space-x-2">
+                    <!-- Country Code Dropdown (Alt) -->
+                    <select id="countryCodeAlt" class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150 w-1/3 max-w-[120px]">
+                        <option value="" disabled selected>Code</option>
+                        <option value="+971">+971 (UAE)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+1">+1 (USA/Canada)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+49">+49 (Germany)</option>
+                        <option value="+61">+61 (Australia)</option>
+                        <option value="+966">+966 (KSA)</option>
+                        <option value="+7">+7 (Russia)</option>
+                        <option value="+86">+86 (China)</option>
+                        <option value="+33">+33 (France)</option>
+                        <option value="+65">+65 (Singapore)</option>
+                        <option value="+60">+60 (Malaysia)</option>
+                        <option value="+81">+81 (Japan)</option>
+                    </select>
+                    <!-- Local Number Input (Alt) -->
+                    <input type="tel" id="localNumberAlt" placeholder="Alternate Phone Number" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                </div>
+            </div>
+
+
+            <!-- Adult Count -->
+            <div>
+                <label for="adults" class="block text-sm font-medium text-gray-700 mb-1">Adults (18+)</label>
+                <input type="number" id="adults" min="1" max="50" value="1" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" required>
+            </div>
+
+            <!-- Child Count -->
+            <div>
+                <label for="children" class="block text-sm font-medium text-gray-700 mb-1">Children (Under 18)</label>
+                <input type="number" id="children" min="0" max="50" value="0" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" required>
+            </div>
+
+            <!-- Select Yacht -->
+            <div>
+                <label for="yachtModel" class="block text-sm font-medium text-gray-700 mb-1">Select Yacht</label>
+                <select id="yachtModel" onchange="displayYachtDetails(this.value)" class="w-full p-3 border border-gray-300 bg-white rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" required>
+                    <option value="" disabled selected>-- Select Yacht Model --</option>
+                    <option value="Luxury_Liner">Luxury Liner (AC) - 1000 AED/hr</option>
+                    <option value="Speed_Cruiser">Speed Cruiser (Non-AC) - 600 AED/hr</option>
+                    <option value="Party_Barge">Party Barge (Deck View) - 800 AED/hr</option>
+                </select>
+            </div>
+            
+            <!-- Yacht Details Display Area -->
+            <div id="yachtDetailsDisplay" class="mt-4 hidden border border-blue-200 rounded-xl overflow-hidden shadow-md">
+                <img id="yachtImage" class="w-full h-auto object-cover" src="" alt="Selected Yacht Image" onerror="this.onerror=null;this.src='https://placehold.co/400x200/cccccc/000000?text=Image+Unavailable';" style="height: 150px;">
+                <div class="p-4 bg-blue-50">
+                    <p id="yachtCapacity" class="text-base font-bold text-blue-800"></p>
+                    <p id="yachtDescription" class="text-sm text-gray-600 mt-1"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button onclick="redirectToWhatsApp()" class="w-full mt-8 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-xl transition duration-300 ease-in-out shadow-lg shadow-green-200 focus:outline-none focus:ring-4 focus:ring-green-300 transform hover:scale-[1.01]">
+            <span class="flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM7 11a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd" />
+                </svg>
+                Send Details via WhatsApp
+            </span>
+        </button>
+
+        <!-- Message Box for Feedback -->
+        <div id="messageBox" class="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg hidden text-sm" role="alert">
+            <!-- Error messages will appear here -->
+        </div>
+        
+        <!-- Contact Info for the Service Provider (for user reference) -->
+        <p class="text-center text-xs text-gray-500 mt-6">
+            Your booking requests will be sent to the service provider at +971 55728 6801.
+        </p>
+    </div>
+
+    <script>
+        // Service Provider's WhatsApp Number
+        const SERVICE_PROVIDER_WA_NUMBER = "971557286801";
+
+        // Yacht Data including image placeholders and capacity/description
+        const yachtDetails = {
+            'Luxury_Liner': {
+                fullName: "Luxury Liner (AC) - 1000 AED/hr",
+                capacity: "Max 15 Guests",
+                image: "https://placehold.co/400x200/007bff/ffffff?text=Luxury+Liner",
+                description: "Experience ultimate comfort with AC, spacious deck, and full crew service. Perfect for high-end parties."
+            },
+            'Speed_Cruiser': {
+                fullName: "Speed Cruiser (Non-AC) - 600 AED/hr",
+                capacity: "Max 8 Guests",
+                image: "https://placehold.co/400x200/00aaff/000000?text=Speed+Cruiser",
+                description: "Fast and nimble, ideal for water sports and sightseeing tours along the Dubai coastline."
+            },
+            'Party_Barge': {
+                fullName: "Party Barge (Deck View) - 800 AED/hr",
+                capacity: "Max 30 Guests",
+                image: "https://placehold.co/400x200/ff9900/000000?text=Party+Barge",
+                description: "The perfect vessel for large gatherings with a massive open deck and sound system."
+            }
+        };
+
+        // Function to display messages in the UI (instead of using alert)
+        function showMessage(message, isError = true) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden');
+            if (isError) {
+                messageBox.classList.add('bg-red-100', 'border-red-400', 'text-red-700');
+                messageBox.classList.remove('bg-green-100', 'border-green-400', 'text-green-700');
+            } else {
+                messageBox.classList.add('bg-green-100', 'border-green-400', 'text-green-700');
+                messageBox.classList.remove('bg-red-100', 'border-red-400', 'text-red-700');
+            }
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Function to display image and details based on dropdown selection
+        function displayYachtDetails(yachtKey) {
+            const displayArea = document.getElementById('yachtDetailsDisplay');
+            const imageElement = document.getElementById('yachtImage');
+            const capacityElement = document.getElementById('yachtCapacity');
+            const descriptionElement = document.getElementById('yachtDescription');
+
+            if (yachtKey && yachtDetails[yachtKey]) {
+                const details = yachtDetails[yachtKey];
+                imageElement.src = details.image;
+                capacityElement.textContent = details.capacity;
+                descriptionElement.textContent = details.description;
+                displayArea.classList.remove('hidden');
+            } else {
+                displayArea.classList.add('hidden');
+                imageElement.src = '';
+                capacityElement.textContent = '';
+                descriptionElement.textContent = '';
+            }
+        }
+
+        function redirectToWhatsApp() {
+            const name = document.getElementById('customerName').value.trim();
+            // WhatsApp Number Fields
+            const countryCode = document.getElementById('countryCode').value.trim();
+            const localNumber = document.getElementById('localNumber').value.trim();
+            const customerWhatsAppPhone = countryCode + localNumber.replace(/[\s-()]/g, '');
+
+            // Alternative Contact Number Fields (Optional)
+            const countryCodeAlt = document.getElementById('countryCodeAlt').value.trim();
+            const localNumberAlt = document.getElementById('localNumberAlt').value.trim();
+            let customerAltPhone = '';
+
+            // 1. Validation for Alt Phone Code
+            if (localNumberAlt) {
+                if (!countryCodeAlt || countryCodeAlt === '') {
+                     showMessage("Please select a country code for the Alternative Contact Number.", true);
+                     return;
+                }
+                customerAltPhone = countryCodeAlt + localNumberAlt.replace(/[\s-()]/g, '');
+            }
+
+            const adultsStr = document.getElementById('adults').value.trim();
+            const childrenStr = document.getElementById('children').value.trim();
+            const yachtKey = document.getElementById('yachtModel').value;
+
+            const adults = parseInt(adultsStr);
+            const children = parseInt(childrenStr);
+            const totalMembers = adults + children;
+
+            // 2. Validation Check (WhatsApp Number and Yacht selection are mandatory)
+            if (!name || !localNumber || !yachtKey) {
+                showMessage("Please fill in Customer Name, WhatsApp Number, and select a Yacht model.", true);
+                return;
+            }
+
+            if (isNaN(adults) || adults < 1) { 
+                showMessage("You must select at least 1 adult.", true);
+                return;
+            }
+            if (isNaN(children) || children < 0) {
+                 showMessage("Child count must be 0 or more.", true);
+                 return;
+            }
+            
+            // Basic number validation for WhatsApp number
+            if (!/^\+?\d{6,15}$/.test(customerWhatsAppPhone)) { 
+                showMessage("Please enter a valid WhatsApp phone number (including country code).", true);
+                return;
+            }
+            // Basic number validation for Alternative number (if provided)
+            if (customerAltPhone && !/^\+?\d{6,15}$/.test(customerAltPhone)) {
+                showMessage("Please enter a valid Alternative Contact Number.", true);
+                return;
+            }
+
+            // Simple check that total guests do not exceed a reasonable limit (50 is max input limit)
+            if (totalMembers > 50) {
+                showMessage(`Total guests (${totalMembers}) exceeds the maximum allowed limit (50). Please contact us directly for large groups.`, true);
+                return;
+            }
+            
+            // Get detailed info for the message
+            const yachtData = yachtDetails[yachtKey];
+            
+            // --- ROBUST MESSAGE CONSTRUCTION USING ARRAY JOIN ---
+            const messageParts = [
+                "*🚢 New Yacht Booking Request (Dubai)*",
+                "", 
+                `*Customer Name:* ${name}`,
+                `*WhatsApp Number:* ${customerWhatsAppPhone}`,
+            ];
+
+            // Add alternative phone if available
+            if (customerAltPhone) {
+                messageParts.push(`*Alternative Contact:* ${customerAltPhone}`);
+            }
+
+            messageParts.push(
+                "", 
+                `*Total Guests:* ${totalMembers}`,
+                `  - Adults: ${adults}`,
+                `  - Children: ${children}`,
+                `*Selected Yacht:* ${yachtData.fullName}`,
+                `*Yacht Capacity:* ${yachtData.capacity}`,
+                "", 
+                "Please contact the customer immediately."
+            );
+            
+            // Join the parts with an explicit newline character (\n) for robust encoding
+            const messageTemplate = messageParts.join('\n');
+
+
+            // 4. Encode the message for URL
+            // IMPORTANT: encodeURIComponent is crucial for line breaks (\n -> %0A)
+            const encodedMessage = encodeURIComponent(messageTemplate);
+
+            // 5. Generate the WhatsApp link
+            const waLink = `https://wa.me/${SERVICE_PROVIDER_WA_NUMBER}?text=${encodedMessage}`;
+
+            // 6. Redirect with an informative message and a small delay
+            // This informs the user they might need an extra 'Send' click inside WhatsApp.
+            showMessage("WhatsApp is opening now. You may need to press the 'Send' button inside WhatsApp to deliver the pre-filled booking details.", false);
+            setTimeout(() => {
+                window.open(waLink, '_blank');
+            }, 500); // 500ms delay to allow user to read the message.
+        }
+    </script>
+
+</body>
+</html>
